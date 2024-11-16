@@ -29,7 +29,7 @@ app.initializers.add('jslirola-login2seeplus', function()
         if (app.session.user || this.isEditing())
             return;
 
-        let oldContent = list[1].children[0].children;
+        let oldContent = list.find(e => e.attrs.className == 'Post-body').children[0].children;
         let newContent = oldContent;
         let subbedContent = false;
 
@@ -68,7 +68,7 @@ app.initializers.add('jslirola-login2seeplus', function()
                 register: "<a class='jslirolaLogin2seeplusRegister'>" + app.translator.trans('core.forum.header.sign_up_link') + "</a>"
             }).join('') + '</div>';
 
-        list[1].children[0] = m.trust(newContent);
+            list.find(e => e.attrs.className == 'Post-body').children[0] = m.trust(newContent);
 
     });
 
